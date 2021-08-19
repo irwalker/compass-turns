@@ -1,10 +1,13 @@
 import React from 'react';
+import styleNormalizer from 'react-style-normalizer';
 
 const DirectionIndicator = props => {
 
   return(
     <div className="di">
-      <div className="di__windrose">
+      <div
+        className="di__windrose"
+        style={styleNormalizer({ transform: `rotate(-${props.heading}deg)` })}>
         <div>
           { [...Array(18)].map((_key, i) => <div className="di__mark--lg" key={i + 1}></div>) }
         </div>

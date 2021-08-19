@@ -85,10 +85,10 @@ const Compass = props => {
 
   return(
     <div>
-      <DirectionIndicator currentHeading={props.currentHeading} buggedHeading={props.desiredHeading} inputHeading={props.inputHeading} />
+      <DirectionIndicator heading={props.currentHeading} buggedHeading={props.desiredHeading} inputHeading={props.inputHeading} />
       <div className="setup">
-        <p>Current Heading: {props.currentHeading}</p>
-        <p>Desired Heading: {props.desiredHeading}</p>
+        <p>Current Heading: {(props.currentHeading + '').padStart(3, '0')}</p>
+        <p>Desired Heading: {(props.desiredHeading + '').padStart(3, '0')}</p>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="answer">
