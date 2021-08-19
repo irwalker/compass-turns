@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import DirectionIndicator from './DirectionIndicator';
 
 const Compass = props => {
   const calculateOvershoot = (desiredHeading) => {
@@ -99,6 +100,8 @@ const Compass = props => {
           <input type="submit" value="Turn this heading" />
         </div>
       </form>
+
+      <DirectionIndicator currentHeading={props.currentHeading} buggedHeading={props.desiredHeading} inputHeading={props.inputHeading} />
     </div>
   );
 };
