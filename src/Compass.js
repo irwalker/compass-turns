@@ -85,6 +85,7 @@ const Compass = props => {
 
   return(
     <div>
+      <DirectionIndicator currentHeading={props.currentHeading} buggedHeading={props.desiredHeading} inputHeading={props.inputHeading} />
       <div className="setup">
         <p>Current Heading: {props.currentHeading}</p>
         <p>Desired Heading: {props.desiredHeading}</p>
@@ -101,7 +102,6 @@ const Compass = props => {
         </div>
       </form>
 
-      <DirectionIndicator currentHeading={props.currentHeading} buggedHeading={props.desiredHeading} inputHeading={props.inputHeading} />
     </div>
   );
 };
