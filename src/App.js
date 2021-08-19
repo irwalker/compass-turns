@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Compass from './Compass';
 
-function App() {
+const App = () => {
+  const min = 0;
+  const max = 360;
+  const currentHeading = Math.floor(Math.random() * (max - min));
+  const desiredHeading = Math.floor(Math.random() * (max - min));
+
   return (
     <div className="App">
+      hodor
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Compass currentHeading={currentHeading} desiredHeading={desiredHeading}/>
       </header>
     </div>
   );
-}
+};
 
 export default App;
