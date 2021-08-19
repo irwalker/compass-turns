@@ -114,6 +114,25 @@ $dark-color: #2A3539;
   transform: rotate(-2deg);
 }
 
+.di__bug {
+  background-color: #BE4D45;
+  width: 10px;
+  height: 30px;
+  border-radius: 3px;
+  position: absolute;
+  left: calc(50% - 10px);
+}
+
+.di__bug-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  top: 0%;
+  left: 0%;
+  position: absolute;
+  z-index: 2;
+}
 
 .di__arrow-container {
   width: 48.076923%;
@@ -149,12 +168,6 @@ $dark-color: #2A3539;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -168,13 +181,4 @@ $dark-color: #2A3539;
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

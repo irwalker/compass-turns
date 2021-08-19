@@ -2,6 +2,16 @@ import React from 'react';
 import styleNormalizer from 'react-style-normalizer';
 
 const DirectionIndicator = props => {
+  const computeBugHeading = (heading, buggedHeading) => {
+    if (heading > buggedHeading) {
+      return heading - buggedHeading;
+    } else {
+      return 360 + heading - buggedHeading;
+    }
+  };
+
+  const buggedHeadingRotation = computeBugHeading(props.heading, props.buggedHeading);
+  console.log("rotate bug" + buggedHeadingRotation);
 
   return(
     <div className="di">
@@ -25,6 +35,14 @@ const DirectionIndicator = props => {
 
       <div className="di__arrow-container">
         <div className="di__arrow"></div>
+      </div>
+
+      <div className="di__bug-container"
+        style={styleNormalizer({ transform: `rotate(-${buggedHeadingRotation}deg)` })}>
+        <div
+          className="di__bug"
+          >
+        </div>
       </div>
     </div>
   );
