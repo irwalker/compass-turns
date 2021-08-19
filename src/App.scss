@@ -46,41 +46,61 @@ $dark-color: #2A3539;
   }
 }
 
+// large lines on the DI
 .di__mark {
-  width: 4px;
-  height: 100%;
-  left: calc(50% - 2px);
-  position: absolute;
-
-  &:before,
-  &:after {
-    content: '';
+  &--lg,
+  &--sm {
+    width: 4px;
+    height: 100%;
+    left: calc(50% - 2px);
     position: absolute;
-    left: 0;
-    width: 2px;
-    height: 10px;
-    // border-radius: 50px;
-    background-color: #fff;
+
+
+    &:before {
+      top: 5%;
+    }
+
+    &:after {
+      bottom: 5%;
+    }
   }
 
-  &:before {
-    top: 5%;
+  &--lg {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 15px;
+      background-color: #fff;
+    }
   }
 
-  &:after {
-    bottom: 5%;
+  &--sm {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 2px;
+      height: 8px;
+      background-color: #fff;
+    }
   }
 }
 
-@for $i from 1 through 11 {
-  $val: 15 * $i;
+// rotate the large and small dashes
+@for $i from 1 through 18 {
+  $val-lg: 10 * $i;
+  $val-sm: $val-lg+ 5;
 
-  @if $i > 5 {
-      $val: $val + 15;
+  .di__mark--lg:nth-child(#{$i}) {
+      transform: rotate(#{$val-lg}deg);
   }
 
-  .di__mark:nth-child(#{$i}) {
-      transform: rotate(#{$val}deg);
+  .di__mark--sm:nth-child(#{$i}) {
+      transform: rotate(#{$val-sm}deg);
   }
 }
 
