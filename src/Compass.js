@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const Compass = props => {
   const calculateOvershoot = (desiredHeading) => {
     if (desiredHeading > 270) {
@@ -69,17 +71,34 @@ const Compass = props => {
   const correct = correctHeading(props.currentHeading, props.desiredHeading);
   console.log("correct heading to turn:" + correct);
 
+  const [inputHeading, setInputHeading] = useState(null);
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (inputHeading == correct) {
+      alert("Correct!");
+    } else {
+      alert("Incorrect, try again!");
+    }
+  };
+
   return(
     <div>
       <div className="setup">
         <p>Current Heading: {props.currentHeading}</p>
         <p>Desired Heading: {props.desiredHeading}</p>
       </div>
-      <div className="answer">
-        <label>Turn to:</label>
-        <input></input>
-        <button>Turn this heading</button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div className="answer">
+          <label>Turn to:</label>
+          <input
+            type="text"
+            value={inputHeading}
+            onChange={e => setInputHeading(e.target.value)}
+          />
+          <input type="submit" value="Turn this heading" />
+        </div>
+      </form>
     </div>
   );
 };
