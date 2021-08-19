@@ -12,7 +12,11 @@ const DirectionIndicator = props => {
           { [...Array(18)].map((_key, j) => <div className="di__mark--sm" key={j + 1}></div>) }
         </div>
         <div>
-
+          {
+            ["N", "3", "6", "E", "12", "15", "S", "21", "24", "W", "30", "33"].map((value, index) =>
+              <div className="di__mark--tag">{value}</div>
+            )
+          }
         </div>
       </div>
 

@@ -25,17 +25,6 @@ $dark-color: #2A3539;
       background-color: $accent-color;
   }
 
-  // &:before {
-  //     top: -16px;
-  //     left: calc(50% - 18px);
-  //     width: 36px;
-  //     height: 36px;
-  //     border-radius: 1000% 50% 0 50%;
-  //     transform: rotate(45deg);
-  //     box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  //     z-index: 1;
-  // }
-
   &:after {
       top: -10px;
       left: calc(50% - 30px);
@@ -46,7 +35,7 @@ $dark-color: #2A3539;
   }
 }
 
-// large lines on the DI
+// marks around the edge of the DI
 .di__mark {
   &--lg,
   &--sm {
@@ -54,7 +43,6 @@ $dark-color: #2A3539;
     height: 100%;
     left: calc(50% - 2px);
     position: absolute;
-
 
     &:before {
       top: 5%;
@@ -88,6 +76,14 @@ $dark-color: #2A3539;
       background-color: #fff;
     }
   }
+
+  &--tag {
+    width: 2px;
+    height: 80%;
+    left: calc(50% - 2px);
+    position: absolute;
+    top: 10%;
+  }
 }
 
 // rotate the large and small dashes
@@ -96,11 +92,20 @@ $dark-color: #2A3539;
   $val-sm: $val-lg+ 5;
 
   .di__mark--lg:nth-child(#{$i}) {
-      transform: rotate(#{$val-lg}deg);
+    transform: rotate(#{$val-lg}deg);
   }
 
   .di__mark--sm:nth-child(#{$i}) {
-      transform: rotate(#{$val-sm}deg);
+    transform: rotate(#{$val-sm}deg);
+  }
+}
+
+// rotate the DI markings (N, S etc)
+@for $i from 2 through 12 {
+  $val: 30 * ($i - 1);
+
+  .di__mark--tag:nth-child(#{$i}) {
+    transform: rotate(#{$val}deg);
   }
 }
 
