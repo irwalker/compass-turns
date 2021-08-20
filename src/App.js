@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
-import Compass from './Compass';
+import Game from './Game';
 
 const App = () => {
   const initializeDirections = () => {
@@ -12,7 +12,7 @@ const App = () => {
     return { current, desired };
   };
 
-  const resetCompass = () => {
+  const resetGame = () => {
     const { current, desired } = initializeDirections();
 
     setCurrentHeading(current);
@@ -28,8 +28,8 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Compass currentHeading={currentHeading} desiredHeading={desiredHeading}/>
-        <button onClick={resetCompass}>Generate New Headings</button>
+        <Game currentHeading={currentHeading} desiredHeading={desiredHeading}/>
+        <button onClick={resetGame}>Generate New Headings</button>
       </header>
     </div>
   );
