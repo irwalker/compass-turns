@@ -36,7 +36,7 @@ const Compass = props => {
     return result;
   };
 
-  const correctHeading = (currentHeading, desiredHeading) => {
+  const outputHeading = (currentHeading, desiredHeading) => {
     const turnLeftDegrees = (currentHeading - desiredHeading < 0) ? (currentHeading - desiredHeading + 360) : currentHeading - desiredHeading;
     const turnRightDegrees = (desiredHeading - currentHeading < 0) ? (desiredHeading - currentHeading + 360) : desiredHeading - currentHeading;
 
@@ -69,23 +69,38 @@ const Compass = props => {
     }
   };
 
-  const correct = correctHeading(props.currentHeading, props.desiredHeading);
+  const correct = outputHeading(props.currentHeading, props.desiredHeading);
   console.log("correct heading to turn:" + correct);
 
   const [inputHeading, setInputHeading] = useState(null);
+  const [chosenHeading, setChosenHeading] = useState(null);
+  const [fail, setFail] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    setChosenHeading(inputHeading);
+
     if (inputHeading == correct) {
-      alert("Correct!");
+      setFail(false);
+      setSuccess(true);
     } else {
-      alert("Incorrect, try again!");
+      setSuccess(false);
+      setFail(true);
     }
   };
 
   return(
     <div>
-      <DirectionIndicator heading={props.currentHeading} buggedHeading={props.desiredHeading} inputHeading={props.inputHeading} />
+      <DirectionIndicator
+        heading={props.currentHeading}
+        buggedHeading={props.desiredHeading}
+        chosenHeading={chosenHeading}
+        correctHeading={correct}
+        success={success}
+        fail={fail}
+        />
+
       <div className="setup">
         <p>Current Heading: {(props.currentHeading + '').padStart(3, '0')}</p>
         <p>Desired Heading: {(props.desiredHeading + '').padStart(3, '0')}</p>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import styleNormalizer from 'react-style-normalizer';
 
 const DirectionIndicator = props => {
@@ -8,6 +8,21 @@ const DirectionIndicator = props => {
     } else {
       return 360 + heading - buggedHeading;
     }
+  };
+
+  const checkArrowColour = () => {
+    if (props.fail) {
+      return "#BE4D45";
+    }
+    if (props.success) {
+      return "#4fd128";
+    }
+    return "#e0841b";
+  };
+
+  const arrowColour = checkArrowColour();
+  const arrowStyle = {
+    backgroundColor: arrowColour
   };
 
   const buggedHeadingRotation = computeBugHeading(props.heading, props.buggedHeading);
@@ -34,15 +49,12 @@ const DirectionIndicator = props => {
       </div>
 
       <div className="di__arrow-container">
-        <div className="di__arrow"></div>
+        <div className="di__arrow" style={arrowStyle}></div>
       </div>
 
       <div className="di__bug-container"
         style={styleNormalizer({ transform: `rotate(-${buggedHeadingRotation}deg)` })}>
-        <div
-          className="di__bug"
-          >
-        </div>
+        <div className="di__bug"></div>
       </div>
     </div>
   );

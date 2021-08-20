@@ -1,5 +1,7 @@
 $accent-color: #e0841b;
 $dark-color: #2A3539;
+$fail-color: #BE4D45;
+$success-color: #4fd128;
 
 .di {
   width: 400px;
@@ -115,7 +117,7 @@ $dark-color: #2A3539;
 }
 
 .di__bug {
-  background-color: #BE4D45;
+  background-color: $fail-color;
   width: 10px;
   height: 30px;
   border-radius: 3px;
@@ -153,10 +155,11 @@ $dark-color: #2A3539;
   height: 71%;
   margin-left: 14.5%;
   margin-top: 14.5%;
-  background-color: #BE4D45;
+  background-color: $accent-color;
   border-radius: 0 50% 50% 50%;
   box-sizing: border-box;
   transform: rotate(45deg);
+  transition: transform 0.3s ease;
 }
 
 .App {
