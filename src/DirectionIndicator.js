@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import styleNormalizer from 'react-style-normalizer';
 
 const DirectionIndicator = props => {
@@ -10,6 +10,7 @@ const DirectionIndicator = props => {
     }
   };
 
+  // TODO: reuse scss colours
   const checkArrowColour = () => {
     if (props.fail) {
       return "#BE4D45";

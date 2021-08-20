@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { outputHeading } from './overshoot';
 import DirectionIndicator from './DirectionIndicator';
+import Compass from './Compass';
 
 const Game = props => {
   const correct = outputHeading(props.currentHeading, props.desiredHeading);
@@ -33,6 +34,7 @@ const Game = props => {
         success={success}
         fail={fail}
         />
+      <Compass />
 
       <div className="setup">
         <p>Current Heading: {(props.currentHeading + '').padStart(3, '0')}</p>
