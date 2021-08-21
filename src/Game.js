@@ -51,18 +51,20 @@ const Game = () => {
 
   return(
     <div>
-      <Compass
-        heading={currentHeading}
-        chosenHeading={chosenHeading}
-        resultHeading={resultHeading}
-        rotateTime={4}
-      />
-
-      <DirectionIndicator
-        heading={currentHeading}
-        buggedHeading={desiredHeading}
-        chosenHeading={chosenHeading}
+      <div className="instrumentsWrapper">
+        <Compass
+          heading={currentHeading}
+          chosenHeading={chosenHeading}
+          resultHeading={resultHeading}
+          rotateTime={4}
         />
+
+        <DirectionIndicator
+          heading={currentHeading}
+          buggedHeading={desiredHeading}
+          chosenHeading={chosenHeading}
+          />
+      </div>
 
       <div className="setup">
         <p>Current Heading: {(currentHeading + '').padStart(3, '0')}</p>
