@@ -15,7 +15,11 @@ const Compass = props => {
           <div>
             {
               ["S", "21", "24", "W", "30", "33","N", "3", "6", "E", "12", "15"].map((value, index) =>
-                <div className="compass__mark--tag" key={`compass-tag${index + 1}`}>{value}</div>
+                <div className="compass__mark--tag" key={`compass-tag${index + 1}`}>
+                  <div className="compass__mark--tag-inner">
+                    {value}
+                  </div>
+                </div>
               )
             }
           </div>
