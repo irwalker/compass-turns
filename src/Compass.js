@@ -17,25 +17,29 @@ const Compass = props => {
   }, [props.rotateTime]);
 
   // when a heading is chosen, rotate to the under/overflow, then to the result heading
-  useEffect(async () => {
-    if (props.chosenHeading && props.resultHeading) {
-      const turnTime = Math.ceil(standardRateTurnTime(props.heading, props.resultHeading) / 3);
-      console.log('Turn time of:' + turnTime + ' seconds');
-      setRotateTime(turnTime);
+  useEffect(() => {
+    const applyHeading = async () => {
+      if (props.chosenHeading && props.resultHeading) {
+        const turnTime = Math.ceil(standardRateTurnTime(props.heading, props.resultHeading) / 3);
+        console.log('Turn time of:' + turnTime + ' seconds');
+        setRotateTime(turnTime);
 
-      console.log('Set heading to chosen heading' + props.chosenHeading);
-      setHeading(props.chosenHeading);
+        console.log('Set heading to chosen heading' + props.chosenHeading);
+        setHeading(props.chosenHeading);
 
-      console.log('Should be waiting for' + turnTime + ' seconds');
+        console.log('Should be waiting for' + turnTime + ' seconds');
 
-      await delay(turnTime * 1000);
+        await delay(turnTime * 1000);
 
-      console.log('Set heading to result heading ' + props.resultHeading);
-      setRotateTime(props.rotateTime);
-      setHeading(props.resultHeading);
+        console.log('Set heading to result heading ' + props.resultHeading);
+        setRotateTime(props.rotateTime);
+        setHeading(props.resultHeading);
 
-      console.log('Set heading to result heading:' + props.resultHeading);
-    }
+        console.log('Set heading to result heading:' + props.resultHeading);
+      }
+    };
+
+    applyHeading();
   }, [props.chosenHeading, props.resultHeading]);
 
   return(

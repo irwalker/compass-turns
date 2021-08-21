@@ -11,7 +11,6 @@ const DirectionIndicator = props => {
   };
 
   const buggedHeadingRotation = computeBugHeading(props.heading, props.buggedHeading);
-  console.log("rotate bug" + buggedHeadingRotation);
 
   return(
     <div className="di">
@@ -19,15 +18,15 @@ const DirectionIndicator = props => {
         className="di__windrose"
         style={styleNormalizer({ transform: `rotate(-${props.heading}deg)` })}>
         <div>
-          { [...Array(18)].map((_key, i) => <div className="di__mark--lg" key={i + 1}></div>) }
+          { [...Array(18)].map((_key, i) => <div className="di__mark--lg" key={`di-lg${i + 1}`}></div>) }
         </div>
         <div>
-          { [...Array(18)].map((_key, j) => <div className="di__mark--sm" key={j + 1}></div>) }
+          { [...Array(18)].map((_key, j) => <div className="di__mark--sm" key={`di-sm${j + 1}`}></div>) }
         </div>
         <div>
           {
             ["N", "3", "6", "E", "12", "15", "S", "21", "24", "W", "30", "33"].map((value, index) =>
-              <div className="di__mark--tag">{value}</div>
+              <div className="di__mark--tag" key={`di-tag${index + 1}`}>{value}</div>
             )
           }
         </div>
