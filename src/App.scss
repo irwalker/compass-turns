@@ -10,6 +10,7 @@ $compass-bg: #20292E;
   width: 400px;
   height: 400px;
   position: relative;
+  margin-top: 1em;
 }
 
 .di__windrose {
@@ -172,6 +173,7 @@ $compass-bg: #20292E;
   height: 300px;
   position: relative;
   background-color: $dark-color;
+  margin-top: 1em;
 }
 
 .compass__inner {
@@ -248,6 +250,8 @@ $compass-bg: #20292E;
 
 .compass__mark--tag-inner{
   transform: rotate(180deg);
+  position: absolute;
+  width: 100%;
 }
 
 // rotate the large and small compass dashes
@@ -264,8 +268,8 @@ $compass-bg: #20292E;
 }
 
 // rotate compass markings (N, S, etc)
-@for $i from 2 through 9 {
-  $val: 30 * ($i - 1);
+@for $i from 2 through 12 {
+  $val: (30 * ($i - 1)) + 2;
 
   .compass__mark--tag:nth-child(#{$i}) {
     transform: rotate(#{$val}deg);

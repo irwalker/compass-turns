@@ -34,7 +34,9 @@ const Game = props => {
         success={success}
         fail={fail}
         />
-      <Compass />
+      <Compass
+        heading={props.currentHeading}
+      />
 
       <div className="setup">
         <p>Current Heading: {(props.currentHeading + '').padStart(3, '0')}</p>
