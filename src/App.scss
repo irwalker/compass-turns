@@ -186,16 +186,85 @@ $compass-bg: #20292E;
   border-radius: 10px;
 }
 
-.compass__windrose {
+.compass__ticker {
   width: 300%;
-  height: 100%;
-  position: relative;
+  height: 250%;
+  position: absolute;
   left: -100%;
+  top: -170%;
+  bottom: 25%;
+  transition: transform 1.0s ease;
+}
 
-  &:before,
-  &:after {
-    content: '';
+.compass__mark {
+  &--lg,
+  &--sm {
+    width: 2px;
+    height: 100%;
     position: absolute;
+    left: calc(50%);
+
+    &::before {
+      top: 5%;
+    }
+
+    &:after {
+      bottom: 5%;
+    }
+
+    &:before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      background-color: #fff;
+    }
+  }
+
+  &--lg {
+    &:before,
+    &::after {
+      width: 2px;
+      height: 15px;
+    }
+  }
+
+  &--sm {
+    &:before,
+    &::after {
+      width: 2px;
+      height: 8px;
+    }
+  }
+
+  &--tag {
+    width: 2px;
+    height: 80%;
+    left: calc(50% + 6px);
+    position: absolute;
+    top: 10%;
+  }
+}
+
+// rotate the large and small compass dashes
+@for $i from 1 through 18 {
+  $val: (10 * $i);
+
+  .compass__mark--lg:nth-child(#{$i}) {
+    transform: rotate(#{$val}deg);
+  }
+
+  .compass__mark--sm:nth-child(#{$i}) {
+    transform: rotate(#{$val + 5}deg);
+  }
+}
+
+// rotate compass markings (N, S, etc)
+@for $i from 2 through 9 {
+  $val: 30 * ($i - 1);
+
+  .compass__mark--tag:nth-child(#{$i}) {
+    transform: rotate(#{$val}deg);
   }
 }
 
@@ -203,6 +272,7 @@ $compass-bg: #20292E;
   width: 2px;
   height: 100%;
   background-color: $accent-color;
+  position: absolute;
   margin-left: 50%;
 }
 
