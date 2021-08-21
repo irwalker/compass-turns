@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styleNormalizer from 'react-style-normalizer';
 
 const Compass = props => {
+  const [heading, setHeading] = useState(props.heading);
+
+  useEffect(() => {
+    setHeading(props.heading);
+  }, [props.heading]);
+
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+
+  // when a heading is chosen, rotate to the under/overflow, then to the result heading
+  useEffect(async () => {
+    if (props.chosenHeading && props.resultHeading) {
+      console.log('Set heading to chosen heading' + props.chosenHeading);
+      setHeading(props.chosenHeading);
+
+      await delay(4000);
+
+      console.log('Set heading to result heading:' + props.resultHeading);
+      setHeading(props.resultHeading);
+    }
+  }, [props.chosenHeading, props.resultHeading]);
+
   return(
     <div className="compass">
       <div className="compass__inner">
         <div
           className="compass__ticker"
-          style={styleNormalizer({ transform: `rotate(-${props.heading}deg)`})}
+          style={styleNormalizer({ transform: `rotate(-${heading}deg)`})}
         >
           <div>
             { [...Array(18)].map((_key, i) => <div className="compass__mark--lg" key={`compass-lg${i + 1}`}></div>) }

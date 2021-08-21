@@ -22,7 +22,7 @@ $compass-bg: #20292E;
   border: 12px solid $accent-color;
   position: relative;
   box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 1.0s ease;
+  transition: transform 4.0s ease;
 
   &:before,
   &:after {
@@ -195,7 +195,7 @@ $compass-bg: #20292E;
   left: -100%;
   top: -170%;
   bottom: 25%;
-  transition: transform 1.0s ease;
+  transition: transform 4.0s ease;
 }
 
 .compass__mark {
