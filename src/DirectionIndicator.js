@@ -10,22 +10,6 @@ const DirectionIndicator = props => {
     }
   };
 
-  // TODO: reuse scss colours
-  const checkArrowColour = () => {
-    if (props.fail) {
-      return "#BE4D45";
-    }
-    if (props.success) {
-      return "#4fd128";
-    }
-    return "#e0841b";
-  };
-
-  const arrowColour = checkArrowColour();
-  const arrowStyle = {
-    backgroundColor: arrowColour
-  };
-
   const buggedHeadingRotation = computeBugHeading(props.heading, props.buggedHeading);
   console.log("rotate bug" + buggedHeadingRotation);
 
@@ -50,7 +34,7 @@ const DirectionIndicator = props => {
       </div>
 
       <div className="di__arrow-container">
-        <div className="di__arrow" style={arrowStyle}></div>
+        <div className="di__arrow"></div>
       </div>
 
       <div className="di__bug-container"

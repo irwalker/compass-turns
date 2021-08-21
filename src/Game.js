@@ -21,8 +21,6 @@ const Game = () => {
     setInputHeading(undefined);
     setChosenHeading(undefined);
     setResultHeading(undefined);
-    setFail(false);
-    setSuccess(false);
 
     return;
   };
@@ -41,9 +39,6 @@ const Game = () => {
   const [chosenHeading, setChosenHeading] = useState(undefined);
   const [resultHeading, setResultHeading] = useState(undefined);
 
-  const [fail, setFail] = useState(false);
-  const [success, setSuccess] = useState(false);
-
   const correct = outputHeading(currentHeading, desiredHeading);
   console.log("correct heading to turn:" + correct);
 
@@ -52,15 +47,6 @@ const Game = () => {
 
     setChosenHeading(inputHeading);
     setResultHeading(desiredHeading);
-
-    // TODO: set fail/success after x time
-    if (inputHeading == correct) {
-      // setFail(false);
-      // setSuccess(true);
-    } else {
-      // setSuccess(false);
-      // setFail(true);
-    }
   };
 
   return(
@@ -76,8 +62,6 @@ const Game = () => {
         heading={currentHeading}
         buggedHeading={desiredHeading}
         chosenHeading={chosenHeading}
-        success={success}
-        fail={fail}
         />
 
       <div className="setup">
