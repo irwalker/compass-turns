@@ -53,6 +53,7 @@ const Game = () => {
     setChosenHeading(inputHeading);
     setResultHeading(desiredHeading);
 
+    // TODO: set fail/success after x time
     if (inputHeading == correct) {
       // setFail(false);
       // setSuccess(true);
@@ -64,6 +65,13 @@ const Game = () => {
 
   return(
     <div>
+      <Compass
+        heading={currentHeading}
+        chosenHeading={chosenHeading}
+        resultHeading={resultHeading}
+        rotateTime={4}
+      />
+
       <DirectionIndicator
         heading={currentHeading}
         buggedHeading={desiredHeading}
@@ -71,11 +79,6 @@ const Game = () => {
         success={success}
         fail={fail}
         />
-      <Compass
-        heading={currentHeading}
-        chosenHeading={chosenHeading}
-        resultHeading={resultHeading} // FIXME
-      />
 
       <div className="setup">
         <p>Current Heading: {(currentHeading + '').padStart(3, '0')}</p>

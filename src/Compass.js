@@ -1,25 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import styleNormalizer from 'react-style-normalizer';
+import { delay } from './delay';
+import { standardRateTurnTime } from './overshoot';
 
 const Compass = props => {
   const [heading, setHeading] = useState(props.heading);
+  const [rotateTime, setRotateTime] = useState(props.rotateTime); // how long the compass takes to rotate
 
   useEffect(() => {
     setHeading(props.heading);
   }, [props.heading]);
 
-  const delay = ms => new Promise(res => setTimeout(res, ms));
+  useEffect(() => {
+    console.log('reset rotate time:' + props.rotateTime);
+    setRotateTime(props.rotateTime);
+  }, [props.rotateTime]);
 
   // when a heading is chosen, rotate to the under/overflow, then to the result heading
   useEffect(async () => {
     if (props.chosenHeading && props.resultHeading) {
+      const turnTime = Math.ceil(standardRateTurnTime(props.heading, props.resultHeading) / 3);
+      console.log('Turn time of:' + turnTime + ' seconds');
+      setRotateTime(turnTime);
+
       console.log('Set heading to chosen heading' + props.chosenHeading);
       setHeading(props.chosenHeading);
 
-      await delay(4000);
+      console.log('Should be waiting for' + turnTime + ' seconds');
+
+      await delay(turnTime * 1000);
+
+      console.log('Set heading to result heading ' + props.resultHeading);
+      setRotateTime(props.rotateTime);
+      setHeading(props.resultHeading);
 
       console.log('Set heading to result heading:' + props.resultHeading);
-      setHeading(props.resultHeading);
     }
   }, [props.chosenHeading, props.resultHeading]);
 
@@ -28,7 +43,12 @@ const Compass = props => {
       <div className="compass__inner">
         <div
           className="compass__ticker"
-          style={styleNormalizer({ transform: `rotate(-${heading}deg)`})}
+          style={styleNormalizer(
+            {
+              transform: `rotate(-${heading}deg)`,
+              transition: `transform ${rotateTime}.0s ease`
+            }
+          )}
         >
           <div>
             { [...Array(18)].map((_key, i) => <div className="compass__mark--lg" key={`compass-lg${i + 1}`}></div>) }
