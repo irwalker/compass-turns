@@ -1,5 +1,6 @@
 import React from 'react';
 import styleNormalizer from 'react-style-normalizer';
+import { FaPlane } from 'react-icons/fa';
 
 const DirectionIndicator = props => {
   const computeBugHeading = (heading, buggedHeading) => {
@@ -34,8 +35,13 @@ const DirectionIndicator = props => {
 
       <div className="di__arrow-container">
         <div className="di__point"></div>
-        <div className="di__plane">
-        </div>
+        <FaPlane
+          size={"3em"}
+          style={styleNormalizer({
+            transform: "rotate(270deg)",
+            margin: "50px"
+          })}
+        />
       </div>
 
       <div className="di__bug-container"
