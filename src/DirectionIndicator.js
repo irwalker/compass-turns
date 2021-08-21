@@ -33,7 +33,8 @@ const DirectionIndicator = props => {
       </div>
 
       <div className="di__arrow-container">
-        <div className="di__arrow"></div>
+        <div className="di__point"></div>
+        <div className="di__plane"></div>
       </div>
 
       <div className="di__bug-container"

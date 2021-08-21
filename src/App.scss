@@ -158,6 +158,18 @@ $compass-bg: #20292E;
   transition: transform 0.3s ease;
 }
 
+.di__point {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #fff;
+  position: absolute;
+  left: 38%;
+  top: -10%;
+  border-radius: 2px;
+}
+
 .di__arrow {
   width: 71%;
   height: 71%;
@@ -169,6 +181,7 @@ $compass-bg: #20292E;
   transform: rotate(45deg);
   transition: transform 0.3s ease;
 }
+
 
 // Compass styling
 
