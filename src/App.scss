@@ -186,6 +186,26 @@ $compass-bg: #20292E;
   border-radius: 10px;
 }
 
+.compass__windrose {
+  width: 300%;
+  height: 100%;
+  position: relative;
+  left: -100%;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+  }
+}
+
+.compass_centre {
+  width: 2px;
+  height: 100%;
+  background-color: $accent-color;
+  margin-left: 50%;
+}
+
 .App {
   text-align: center;
 }

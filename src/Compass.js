@@ -5,7 +5,8 @@ const Compass = props => {
   return(
     <div className="compass">
       <div className="compass__inner">
-        <div className="compass__windrose"></div>
+        <div className="compass__ticker"></div>
+        <div className="compass_centre"></div>
       </div>
     </div>
   )
