@@ -4,9 +4,9 @@ import Game from './Game';
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-content">
         <Game />
-      </header>
+      </div>
     </div>
   );
 };

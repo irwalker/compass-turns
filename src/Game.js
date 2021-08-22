@@ -1,7 +1,10 @@
 import { useMemo, useState } from 'react';
 import { outputHeading } from './overshoot';
+
 import DirectionIndicator from './DirectionIndicator';
 import Compass from './Compass';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Game = () => {
   const initializeDirections = () => {
@@ -66,22 +69,27 @@ const Game = () => {
           />
       </div>
 
-      <div className="setup">
-        <p>Current Heading: {(currentHeading + '').padStart(3, '0')}</p>
-        <p>Desired Heading: {(desiredHeading + '').padStart(3, '0')}</p>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <div className="answer">
-          <label>Turn to:</label>
-          <input
-            type="text"
-            value={inputHeading}
-            onChange={e => setInputHeading(e.target.value)}
-          />
-          <input type="submit" value="Turn this heading" />
-        </div>
-      </form>
-      <button onClick={resetGame}>Generate New Headings</button>
+      <Row>
+        <Col>
+          TODO: settings go here
+        </Col>
+        <Col>
+          <p>Current Heading: {(currentHeading + '').padStart(3, '0')}</p>
+          <p>Desired Heading: {(desiredHeading + '').padStart(3, '0')}</p>
+          <form onSubmit={handleSubmit}>
+            <div className="answer">
+              <label>Turn to:</label>
+              <input
+                type="text"
+                value={inputHeading}
+                onChange={e => setInputHeading(e.target.value)}
+              />
+              <input type="submit" value="Turn this heading" />
+            </div>
+          </form>
+          <button onClick={resetGame}>Generate New Headings</button>
+        </Col>
+      </Row>
     </div>
   );
 };
