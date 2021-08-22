@@ -1,8 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
+
 $accent-color: #e0841b;
 $dark-color: #2A3539;
 $fail-color: #BE4D45;
 $success-color: #4fd128;
 $compass-bg: #20292E;
+
+.di,
+.compass {
+  font-size: calc(10px + 2vmin);
+}
 
 // DI styling
 
@@ -325,14 +332,13 @@ $compass-bg: #20292E;
   pointer-events: none;
 }
 
-.App-header {
+.App-content {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction:row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: #fff;
 }
 
