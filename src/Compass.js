@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styleNormalizer from 'react-style-normalizer';
+
 import { delay } from './delay';
 import { standardRateTurnTime } from './overshoot';
+
+import { Button } from 'react-bootstrap';
 
 const Compass = props => {
   const [heading, setHeading] = useState(props.heading);

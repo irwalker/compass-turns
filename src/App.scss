@@ -18,8 +18,9 @@ $compass-bg: #20292E;
   height: 400px;
   position: relative;
   @media (min-width: 796px) {
-    float: left;
+    float: right;
     margin-top: 1em;
+    margin-left: 1em;
   }
 }
 
@@ -209,8 +210,7 @@ $compass-bg: #20292E;
   position: relative;
   background-color: $dark-color;
   @media (min-width: 796px) {
-    float: right;
-    margin-left: 1em;
+    float: left;
     top: 10%;
   }
 }

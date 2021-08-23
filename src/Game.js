@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
 import { outputHeading } from './overshoot';
 
-import DirectionIndicator from './DirectionIndicator';
-import Compass from './Compass';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import DirectionIndicator from './DirectionIndicator';
+import Compass from './Compass';
+import GameInputs from './GameInputs';
 
 const Game = () => {
   const initializeDirections = () => {
@@ -21,7 +23,6 @@ const Game = () => {
 
     setCurrentHeading(current);
     setDesiredHeading(desired);
-    setInputHeading(undefined);
     setChosenHeading(undefined);
     setResultHeading(undefined);
 
@@ -36,8 +37,6 @@ const Game = () => {
   const [currentHeading, setCurrentHeading] = useState(current);
   const [desiredHeading, setDesiredHeading] = useState(desired);
 
-  const [inputHeading, setInputHeading] = useState(undefined);
-
   // the direction chosen to turn, and the resulting direction after compass lag
   const [chosenHeading, setChosenHeading] = useState(undefined);
   const [resultHeading, setResultHeading] = useState(undefined);
@@ -45,9 +44,7 @@ const Game = () => {
   const correct = outputHeading(currentHeading, desiredHeading);
   console.log("correct heading to turn:" + correct);
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-
+  const handleHeadingSelect = (inputHeading) => {
     setChosenHeading(inputHeading);
     setResultHeading(desiredHeading);
   };
@@ -55,39 +52,31 @@ const Game = () => {
   return(
     <div>
       <div className="instrumentsWrapper">
+        <DirectionIndicator
+          heading={currentHeading}
+          buggedHeading={desiredHeading}
+          chosenHeading={chosenHeading}
+          />
+
         <Compass
           heading={currentHeading}
           chosenHeading={chosenHeading}
           resultHeading={resultHeading}
           rotateTime={4}
         />
-
-        <DirectionIndicator
-          heading={currentHeading}
-          buggedHeading={desiredHeading}
-          chosenHeading={chosenHeading}
-          />
       </div>
 
       <Row>
         <Col>
-          TODO: settings go here
+          <GameInputs
+            handleHeadingSelect={handleHeadingSelect}
+            currentHeading={currentHeading}
+            desiredHeading={desiredHeading}
+          />
+          <button onClick={resetGame}>Generate New Headings</button>
         </Col>
         <Col>
-          <p>Current Heading: {(currentHeading + '').padStart(3, '0')}</p>
-          <p>Desired Heading: {(desiredHeading + '').padStart(3, '0')}</p>
-          <form onSubmit={handleSubmit}>
-            <div className="answer">
-              <label>Turn to:</label>
-              <input
-                type="text"
-                value={inputHeading}
-                onChange={e => setInputHeading(e.target.value)}
-              />
-              <input type="submit" value="Turn this heading" />
-            </div>
-          </form>
-          <button onClick={resetGame}>Generate New Headings</button>
+          TODO: settings go here
         </Col>
       </Row>
     </div>
