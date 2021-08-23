@@ -51,6 +51,9 @@ const Game = () => {
 
   return(
     <div>
+      <h2>Current Heading: {(currentHeading + '').padStart(3, '0')}</h2>
+      <h2>Desired Heading: {(desiredHeading + '').padStart(3, '0')}</h2>
+
       <div className="instrumentsWrapper">
         <DirectionIndicator
           heading={currentHeading}
@@ -69,11 +72,10 @@ const Game = () => {
       <Row>
         <Col>
           <GameInputs
-            handleHeadingSelect={handleHeadingSelect}
-            currentHeading={currentHeading}
             desiredHeading={desiredHeading}
+            handleHeadingSelect={handleHeadingSelect}
+            resetGame={resetGame}
           />
-          <button onClick={resetGame}>Generate New Headings</button>
         </Col>
         <Col>
           TODO: settings go here
